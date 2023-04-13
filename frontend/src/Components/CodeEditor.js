@@ -12,14 +12,6 @@ function CodeEditor() {
     setCode(newCode);
   };
 
-  const handleRunCode = async () => {
-    try {
-      const response = await axios.post('http://backend-container:3000/run', { code });
-      setOutput(response.data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
  
   return (
     <>
@@ -45,7 +37,7 @@ function CodeEditor() {
             name: 'runCode',
             bindKey: { win: 'Ctrl-Enter', mac: 'Command-Enter' },
             exec: editor => {
-              handleRunCode();
+              
             },
           },
         ]}
