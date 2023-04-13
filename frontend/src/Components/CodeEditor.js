@@ -14,7 +14,7 @@ function CodeEditor() {
 
   const handleRunCode = async () => {
     try {
-      const response = await axios.post('/compile', { code });
+      const response = await axios.post('http://backend-container:3000/run', { code });
       setOutput(response.data);
     } catch (error) {
       console.error(error);

@@ -5,6 +5,8 @@ require('dotenv').config();
 const router = require('./routes')
 const bodyParser=require('body-parser')
 const {exec} =  require('child_process')
+const Docker = require('dockerode');
+const docker = new Docker();
 
 const app = express();
 const port = process.env.PORT || 8080
@@ -14,14 +16,20 @@ app.options('*', cors())
 app.listen(port, console.log('Server is on port: ' + port));
 app.use('/api', router);
 
-app.post('/compile', async (req, res) => {
+app.post('/run', async (req, res) => {
     const { code } = req.body;
-    
-    // Create a Docker container from an image that has your desired compiler
+  
+    // Create a Docker container from the node:14 image
     const container = await docker.createContainer({
-      Image: 'your-compiler-image-name',
+      Image: 'node:14',
+      Tty: true,
+      OpenStdin: true,
+      AttachStdin: true,
       Cmd: ['sh', '-c', `echo "${code}" > code.js && node code.js`],
     });
+  
+    // Attach stdin to allow user input
+    await container.attach({ stream: true, stdin: true });
   
     // Start the container
     await container.start();
