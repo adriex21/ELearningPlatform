@@ -7,7 +7,7 @@ const bodyParser=require('body-parser')
 const {exec} =  require('child_process')
 const Docker = require('dockerode');
 const docker = new Docker();
-const fs = require('fs');
+
 
 const app = express();
 const port = process.env.PORT || 3000
