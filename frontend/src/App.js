@@ -1,10 +1,15 @@
 import './App.css';
 import CodeEditor from './Components/CodeEditor';
+import XtermTerminal from './Components/Terminal'
 
 function App() {
 
   return (
-    <CodeEditor></CodeEditor>
+    <div> 
+      <CodeEditor></CodeEditor>
+     
+    </div>
+    
   );
 }
 

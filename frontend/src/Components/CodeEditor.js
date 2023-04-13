@@ -52,7 +52,7 @@ function CodeEditor() {
       />
       <button onClick={handleRunCode}>Run Code</button>
       <div>Output:</div>
-      <div style={{"whiteSpace": "preLine"}}>{output}</div>
+      <div dangerouslySetInnerHTML={{ __html: output }}></div>
     </>
   );
 }
