@@ -7,6 +7,7 @@ const bodyParser=require('body-parser')
 const {exec} =  require('child_process')
 const Docker = require('dockerode');
 const docker = new Docker();
+const fs = require('fs');
 
 const app = express();
 const port = process.env.PORT || 3000
@@ -16,13 +17,14 @@ app.options('*', cors())
 app.listen(port, console.log('Server is on port: ' + port));
 
 app.post('/compile', async (req, res) => {
-    const code = req.body.code;
+    const encodedCode = req.body.code;
     console.log(req.body);
+    
     // Create a Docker container from an image that has your desired compiler
     const container = await docker.createContainer({
       Image: 'gcc:latest',
       Tty: true,
-      Cmd: ['sh', '-c', `echo "${code.replace(/"/g, '\\"')}" > code.cpp && g++ code.cpp -o code && ./code`],
+      Cmd: ['sh', '-c', `echo "${encodedCode}" | base64 -d > code.cpp && g++ code.cpp -o code && ./code`],
     });
   
     // Start the container
@@ -33,8 +35,8 @@ app.post('/compile', async (req, res) => {
   
     // Get the output of the command from the container logs
     const output = await container.logs({ stdout: true, stderr: true });
-    const outputString = output.toString('utf8').trim();
-  
+    const outputString = output.toString();
+    
     // Remove the container
     await container.remove();
   

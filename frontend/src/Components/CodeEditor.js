@@ -16,13 +16,14 @@ function CodeEditor() {
 
   const handleRunCode = async () => {
     try {
+      const encodedCode = btoa(code)
       console.log("Code:", code);
-      const response = await axios.post('http://localhost:3000/compile',  { code },{ 
+      const response = await axios.post('http://localhost:3000/compile',  { code:encodedCode },{ 
         headers: {
         'Content-Type': 'application/json'
       }});
-      const { output } = response.data;
-      setOutput(output); 
+      
+      setOutput(response.data.output); 
       console.log(response.data)
     } catch (error) {
       console.error(error);
@@ -51,7 +52,7 @@ function CodeEditor() {
       />
       <button onClick={handleRunCode}>Run Code</button>
       <div>Output:</div>
-      <div>{output}</div>
+      <div style={{"whiteSpace": "preLine"}}>{output}</div>
     </>
   );
 }
