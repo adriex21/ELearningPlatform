@@ -9,6 +9,6 @@ const teacher = new Schema({
     coursesManaged : [{type:mongoose.Schema.Types.ObjectId, ref:"Courses"}],
 })
 
-const Teacher = mongoose.model('Teacher', student);
+const Teacher = mongoose.model('Teacher', teacher);
 
 module.exports = Teacher;
