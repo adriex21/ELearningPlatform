@@ -18,6 +18,7 @@ app.listen(port, console.log('Server is on port: ' + port));
 
 app.post('/compile', async (req, res) => {
     const encodedCode = req.body.code;
+
     console.log(req.body);
     
     // Create a Docker container from an image that has your desired compiler
@@ -34,7 +35,7 @@ app.post('/compile', async (req, res) => {
     await container.wait();
   
     // Get the output of the command from the container logs
-    const output = await container.logs({ stdout: true, stderr: true });
+    const output = await container.logs({ stdout: true, stderr: true , stdin:true});
     const outputString = output.toString();
     // Remove the container
     await container.remove();
