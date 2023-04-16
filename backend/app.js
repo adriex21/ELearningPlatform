@@ -35,14 +35,15 @@ app.post('/compile', async (req, res) => {
   
     // Get the output of the command from the container logs
     const output = await container.logs({ stdout: true, stderr: true });
-    const outputString = output.toString().replace(/\r?\n/g, '<br />');
-    
+    const outputString = output.toString();
     // Remove the container
     await container.remove();
   
     // Send the output back to the client
     res.send({ output: outputString });
   });
+
+  
   
 
 module.exports = app;

@@ -1,36 +1,46 @@
 .code-editor-container {
-    display: flex;
-    height: 100vh;
-  }
-  
+  display: flex;
+  height: 100vh;
+}
+
 .code-editor-wrapper {
-    flex: 1;
-  }
-  
-  .output-container {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
-  }
-  
-  .run-button {
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .output-box {
-    background-color: #f1f1f1;
-    padding: 10px;
-    flex-grow: 1;
-    overflow-y: auto;
-  }
+  flex: 1;
+}
+
+.output-container {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  background-color: #44475a;
+  color: #f8f8f2;
+}
+
+.run-button {
+  background-color: #bd93f9 ;
+  border: none;
+  color: #f8f8f2;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.xterm-container {
+  height: 100%;
+}
+
+.xterm-viewport {
+  overflow-y: hidden !important;
+}
+
+.xterm-screen {
+  background-color: #282a36;
+  color: #f8f8f2;
+}
+
+
