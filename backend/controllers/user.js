@@ -35,28 +35,22 @@ const controller = {
             })
     },
 
-    login: async(req,res) => {
-     
-        let user = await User.findOne({email:req.body.email});
+    login: async (req, res) => {
+        let user = await User.findOne({ email: req.body.email });
 
-        if(user) {
-            
+        if (user) {
             let valid = await bcrypt.compare(req.body.password, user.password);
-            if(valid) {
-
-                const expires = moment().add(10,'days');
-                const token = generateToken(user._id,expires);
-                res.send({ok:true, id:user._id, token:token});
-
-            } 
-            else {
-                res.send({ok:false, msg:"Password/email doesn't match"});
+            if (valid) {
+                const expires = moment().add(10, 'days');
+                const token = generateToken(user._id, expires);
+                res.json({ ok: true, id: user._id, token: token });
+            } else {
+                res.status(401).json({ ok: false, message: "Password/email doesn't match" });
             }
-        } 
-        else {
-            res.send({ok:false, msg:"User doesn't exist"});
+        } else {
+            res.status(404).json({ ok: false, message: "User doesn't exist" });
         }
-    }
+    },
 }
 
 module.exports = controller;
