@@ -39,8 +39,6 @@ app.use('/api', router);
 app.post('/compile', async (req, res) => {
     const encodedCode = req.body.code;
 
-    console.log(req.body);
-    
     // Create a Docker container from an image that has your desired compiler
     const container = await docker.createContainer({
       Image: 'gcc:latest',
@@ -62,6 +60,7 @@ app.post('/compile', async (req, res) => {
   
     // Send the output back to the client
     res.send({ output: outputString });
+    
   });
 
   

@@ -7,7 +7,7 @@ const userSignUp = {
         password:Joi.string().required().min(3).max(15),
         password_confirmation: Joi.any().valid(Joi.ref('password')).required().messages({ 'any.only': 'must match password' }),
         email:Joi.string().required().email(),
-        role:Joi.string().required()
+        role:Joi.string().required().valid('Student', 'Teacher')
     })
 };
 

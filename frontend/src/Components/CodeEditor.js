@@ -4,7 +4,7 @@ import brace from 'brace'
 import axios from 'axios';
 import 'brace/mode/c_cpp';
 import 'brace/theme/dracula';
-import 'brace/ext/language_tools';
+import 'brace/ext/language_tools.js';
 import 'xterm/css/xterm.css';
 import { Terminal } from 'xterm';
 import { FitAddon } from 'xterm-addon-fit';
@@ -78,7 +78,6 @@ int main() {
     }
   };
   
-
   return (
     <div className="code-editor-container">
       <div className="code-editor-wrapper">
@@ -94,8 +93,8 @@ int main() {
           wrapEnabled={true}
           setOptions={{
             useWorker: false,
-            enableBasicAutocompletion: false,
-            enableLiveAutocompletion: false,
+            enableBasicAutocompletion: true,
+            enableLiveAutocompletion: true,
             enableSnippets: false,
             showLineNumbers: true,
             tabSize: 2,
