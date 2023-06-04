@@ -1,10 +1,6 @@
 import React, { useState } from 'react';
 import { Login } from '../../utils/requests';
 import { useNavigate } from 'react-router-dom';
-import Main from '../../Containers/Main/Main'
-import { Navigate } from 'react-router-dom'
-
-
 
 const LoginPage = (props) => {
 
@@ -75,7 +71,7 @@ const LoginPage = (props) => {
                 />
 
                 <div className="flex justify-center mt-4">
-                    <button onClick={handleLogin} className="bg-blue-500 text-white p-2 rounded-md">Login</button>
+                    <button onClick={handleLogin} className="bg-blue-500 text-white p-2 rounded-md" >Login</button>
                 </div>
 
                 <div className="text-center mt-4">
