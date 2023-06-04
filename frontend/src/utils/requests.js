@@ -27,6 +27,8 @@ export const SignUp = async (payload) => {
           });
   
           if (response.status === 200) {
+            const token = response.data.token;
+            localStorage.setItem('token', token);
               return response.data;
           } else {
               throw new Error('Login failed');

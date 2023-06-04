@@ -51,6 +51,18 @@ const controller = {
             res.status(404).json({ ok: false, message: "User doesn't exist" });
         }
     },
+
+    getUser: async(req,res) => {
+        User.findOne(
+            { _id: req.user._id }
+        ).then(user =>{
+            res.status(200).send(user);
+        }).catch(err => {
+            res.status(500).send(err);
+            res.send({ msg: "User doesn't exist" });
+        })
+    },
+
 }
 
 module.exports = controller;

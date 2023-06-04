@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { Login } from '../../utils/requests';
 import { useNavigate } from 'react-router-dom';
+import Main from '../../Containers/Main/Main'
+import { Navigate } from 'react-router-dom'
 
 
 
-const LoginPage = () => {
+const LoginPage = (props) => {
 
     const navigate = useNavigate();
 
@@ -36,6 +38,7 @@ const LoginPage = () => {
             // If login is successful, handle it here
             setLoginData(initialData);
             setErrors([]);
+            navigate('/dashboard');
         } else if (response && response.message) {
             // If there's an error, set the error message
             setErrors([response.message]);
@@ -46,6 +49,7 @@ const LoginPage = () => {
     };
 
     return (
+
         <div className="flex flex-col justify-center items-center h-screen bg-gray-100">
             <form onSubmit={e => e.preventDefault()} className="bg-blue-200 p-6 rounded shadow-md w-1/3">
                 {errors.map(error => (
@@ -82,6 +86,7 @@ const LoginPage = () => {
                 </div>
             </form>
         </div>
+
     );
 };
 

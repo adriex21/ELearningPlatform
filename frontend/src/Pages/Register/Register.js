@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { SignUp } from '../../utils/requests'
+import { useNavigate } from 'react-router-dom';
 
 const initialData = {
     firstName:'', 
@@ -11,6 +12,12 @@ const initialData = {
 }
 
 const Register  = () => {
+
+    const navigate = useNavigate();
+
+    const login = () => {
+        navigate('/login');
+    }
 
     const [signUp, setSignUp] = useState(initialData)
     const [errors, setErrors] = useState([])
@@ -90,6 +97,12 @@ const Register  = () => {
             
             <div className="flex justify-center mt-4">
             <button onClick={handleSignUp} className="bg-blue-500 text-white p-2 rounded-md">Sign Up</button>
+            </div>
+            <div className="text-center mt-4">
+                    <p>Already have an account?</p>
+                    <button className="text-blue-500 underline hover:text-blue-700 focus:outline-none focus:text-blue-700" onClick={login}>
+                        Login
+                    </button>
             </div>
         </form>
         </div>
