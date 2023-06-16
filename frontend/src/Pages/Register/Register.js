@@ -25,7 +25,7 @@ const Register  = () => {
     const handleSignUp = async () => {
         const response = await SignUp(signUp)
         if (response && response.data) {
-            // If there's a successful response, handle it here
+            // If there's a successful response, handle it here 
             setSignUp(initialData);
             setErrors({});
             return window.location.href = '/';

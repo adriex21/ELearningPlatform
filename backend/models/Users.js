@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 const {Schema} = mongoose;
 const CryptoJS = require('crypto-js');
 const bcrypt = require('bcryptjs');
+require('dotenv').config();
+
 
 const user = new Schema({
     firstName: {type:String},

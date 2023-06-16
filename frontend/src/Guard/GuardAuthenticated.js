@@ -11,6 +11,7 @@ const GuardAuthenticated = (props) => {
     if(authenticated === 'uninit') return <></>
     if(authenticated === 'authenticated') return <Navigate to="/dashboard"></Navigate>
     return children
+    
 }
 
 export default GuardAuthenticated

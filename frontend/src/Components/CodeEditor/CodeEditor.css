@@ -1,21 +1,3 @@
-.code-editor-container {
-  display: flex;
-  height: 100vh;
-}
-
-.code-editor-wrapper {
-  flex: 1;
-}
-
-.output-container {
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  padding: 10px;
-  background-color: #44475a;
-  color: #f8f8f2;
-}
-
 .run-button {
   background-color: #bd93f9 ;
   border: none;
@@ -25,13 +7,9 @@
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  margin-bottom: 10px;
   border-radius: 5px;
   cursor: pointer;
-}
-
-.xterm-container {
-  height: 100%;
+  width: auto;
 }
 
 .xterm-viewport {
@@ -41,6 +19,14 @@
 .xterm-screen {
   background-color: #282a36;
   color: #f8f8f2;
+  width: 100% !important;
+  height: 100% !important;
 }
 
+.xterm-container{
+  width: 100%;
+}
 
+.xterm-rows{
+  width: 100% !important;
+}

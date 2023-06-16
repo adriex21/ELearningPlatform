@@ -2,9 +2,12 @@ const mongoose = require('mongoose');
 const {Schema} = mongoose;
 
 const submission = new Schema({
+
    submittedBy: {type:mongoose.Schema.Types.ObjectId, ref:'Users'},
-   
-    
+   submittedFor: {type:mongoose.Schema.Types.ObjectId, ref:'Assignments'},
+   submittedAt: {type:Date, default:Date.now},
+   answer:{type:String},
+   grade: {type:Number, min:0, max:10}
 })
 
 const Submission = mongoose.model('Submission', submission);

@@ -14,6 +14,7 @@
     "react-bash": "^1.6.0",
     "react-console-emulator": "^5.0.2",
     "react-dom": "^18.2.0",
+    "react-markdown": "^8.0.7",
     "react-redux": "^8.0.7",
     "react-router": "^6.11.2",
     "react-router-dom": "^6.10.0",

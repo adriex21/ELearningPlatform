@@ -16,19 +16,18 @@ function CodeEditor() {
 
   useEffect(() => {
     const defaultCode = `// Your First C++ Program
-#include <iostream>
-using namespace std;
+    #include <iostream>
+    using namespace std;
 
-int main() {
-  
-    cout << "Hello World!";
-    return 0;
-    
-}`;
+    int main() {
+      
+        cout << "Hello World!";
+        return 0;
+        
+    }`;
 
     setCode(defaultCode);
 
-    // Create and initialize the terminal instance
     const term = new Terminal({
       cursorBlink: true,
       scrollback: 1000,
@@ -79,8 +78,7 @@ int main() {
   };
   
   return (
-    <div className="code-editor-container">
-      <div className="code-editor-wrapper">
+    <div className="code-editor-container h-full w-2/3 bg-white gap-3 flex">
         <AceEditor
           style={{ height: "100%", width: "100%" }}
           mode="c_cpp"
@@ -100,13 +98,14 @@ int main() {
             tabSize: 2,
           }}
         />
-      </div>
-      <div className="output-container">
-        <button className="run-button" onClick={handleRunCode}>
-          Run Code
-        </button>
-        <div id="xterm-container" className="xterm-container"></div>
-      </div>
+      <div className="w-1/2 flex flex-col bg-[#44475a]">
+        <div className="p-5">
+          <button className="run-button" onClick={handleRunCode}>
+            Run Code
+          </button>
+        </div>
+        <div id="xterm-container" className="xterm-container w-full h-full"></div>
+      </div> 
     </div>
   );
 }

@@ -1,0 +1,20 @@
+.reactMarkDown{
+
+    margin-left: 10px;
+    font-family:Arial, Helvetica, sans-serif;
+    margin-top: 3%;
+}
+
+  .reactMarkDown h1 {
+
+    
+    font-size:30px;
+    font-weight: bold;
+  }
+
+  .reactMarkDown p {
+
+    margin-top:3%;
+    font-size:18px;
+
+  }

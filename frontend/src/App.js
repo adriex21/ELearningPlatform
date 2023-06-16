@@ -7,6 +7,9 @@ import Login from './Pages/Login/LoginPage';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import Guard from './Guard/Guard';
 import GuardAuthenticated from './Guard/GuardAuthenticated';
+import AssignmentTeacher from './Components/Assignments/AssignmentTeacher';
+import AssignmentStudent from './Components/Assignments/AssignmentStudent';
+import CreateAssignment from './Components/Assignments/CreateAssignment';
 
 
 function App() {
@@ -30,6 +33,18 @@ function App() {
             path="/dashboard"
             element={<Guard><Dashboard/></Guard>}
           />
+          <Route 
+            path="/view/:assignment_id"
+            element={<Guard><AssignmentTeacher/></Guard>}
+             />
+             <Route 
+            path="/submission/:assignment_id"
+            element={<Guard><AssignmentStudent/></Guard>}
+             />
+             <Route
+             path="/createAssignment"
+             element={<Guard><CreateAssignment/> </Guard>}
+              />
         </Routes>
       </BrowserRouter>
     </div>
