@@ -1,6 +1,5 @@
 import './App.css';
-import CodeEditor from './Components/CodeEditor/CodeEditor';
-import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import Register from './Pages/Register/Register'
 import LandingPage from './Pages/FirstPage/LandingPage';
 import Login from './Pages/Login/LoginPage';
@@ -8,8 +7,9 @@ import Dashboard from './Pages/Dashboard/Dashboard';
 import Guard from './Guard/Guard';
 import GuardAuthenticated from './Guard/GuardAuthenticated';
 import AssignmentTeacher from './Components/Assignments/AssignmentTeacher';
-import AssignmentStudent from './Components/Assignments/AssignmentStudent';
 import CreateAssignment from './Components/Assignments/CreateAssignment';
+import EditAssignment from './Components/Assignments/EditAssignment';
+import Submission from './Components/Submissions/Submission';
 
 
 function App() {
@@ -39,12 +39,16 @@ function App() {
              />
              <Route 
             path="/submission/:assignment_id"
-            element={<Guard><AssignmentStudent/></Guard>}
+            element={<Guard><Submission/></Guard>}
              />
              <Route
              path="/createAssignment"
              element={<Guard><CreateAssignment/> </Guard>}
               />
+              <Route
+              path="/editAssignment/:assignment_id"
+              element={<Guard><EditAssignment/></Guard>}
+               />
         </Routes>
       </BrowserRouter>
     </div>

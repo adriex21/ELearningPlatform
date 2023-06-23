@@ -18,6 +18,16 @@ const controller = {
 
         } 
     },
+
+    editAssignment: async (req,res) => {
+
+        const teacher = await User.findById(req.user._id);
+        const updatedAssignment = req.body;
+        if(compare(teacher.role, "Teacher")) {
+            const assignment = await Assignment.findByIdAndUpdate(req.params.id, updatedAssignment, {new:true});
+            return res.send(assignment).status(200);
+        }
+    }
 }
 
 module.exports = controller;

@@ -92,6 +92,25 @@ export const createAssignment  = async(payload) => {
       console.log(err);
       return err.response.data;
   }
-}
+};
+
+export const editAssignment = async (assignment_id, payload) => { 
+  try {
+    const { _id, createdBy, createdAt,status, __v, ...updatedPayload } = payload;
+    const response = await axios.put(`http://localhost:3000/api/teacher/editAssignment/${assignment_id}`, updatedPayload, {
+      headers : {
+        "Authorization" : "Bearer " + localStorage.getItem("token"),
+        "Content-Type" : 'application/json'
+      }
+    });
+
+    if (response.status === 500) return null;
+    return response;
+  } catch (err) {
+    console.log(err);
+    return err.response.data;
+  }
+};
+
 
   

@@ -3,8 +3,6 @@ const cors = require('cors')
 const mongoose = require('mongoose');
 require('dotenv').config();
 const router = require('./routes')
-const bodyParser=require('body-parser')
-const {exec} =  require('child_process')
 const Docker = require('dockerode');
 const docker = new Docker();
 const passport=require("passport")

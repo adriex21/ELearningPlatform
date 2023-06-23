@@ -10,7 +10,18 @@ const createAssignment = {
     })
 };
 
+const editAssignment = {
+    body:Joi.object().keys( {
+        title:Joi.string(),
+        description:Joi.string(),
+        maxGrade:Joi.number(),
+        dueBy:Joi.date().greater(Date.now()),
+        type:Joi.string().valid('homework', 'validation'),
+    })
+}
+
 
 module.exports = {
     createAssignment,
+    editAssignment
 };

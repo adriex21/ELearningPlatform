@@ -8,9 +8,10 @@ const assig = new Schema({
     dueBy: {type:Date , required:true},
     title: {type:String, required:true},
     type: {type:String, required:true, enum: ['homework', 'evaluation']},
-    status:{type:String, enum: ["open", "closed"], default:"open" },
+    status: {type:String, enum:['open', 'closed'], default: 'open'},
     maxGrade: {type:Number, min:0, max:100},
-    description: {type:String, required:true}
+    description: {type:String, required:true},
+    subsmissions:[{type:mongoose.Schema.Types.ObjectId, ref: 'Submission'}]
     
 })
 

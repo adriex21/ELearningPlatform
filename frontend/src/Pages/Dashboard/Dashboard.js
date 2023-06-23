@@ -20,13 +20,6 @@ const Dashboard = (props) => {
         getData()
     },[])
 
-    const navigate = useNavigate();
-    const createAssignment = () => {
-        
-        navigate('/createAssignment');
-    }
-
-
 
     return( 
         <Main>
@@ -34,7 +27,6 @@ const Dashboard = (props) => {
 
                <Assignments assignments={assignments}> </Assignments>
 
-               {user.role === "Teacher" && (<button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" onClick={createAssignment} > Create new assignment </button>)}
 
             </div>
         </Main>

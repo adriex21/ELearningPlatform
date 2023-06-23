@@ -15,16 +15,16 @@ function CodeEditor() {
   const [term, setTerm] = useState(null);
 
   useEffect(() => {
-    const defaultCode = `// Your First C++ Program
-    #include <iostream>
-    using namespace std;
+    const defaultCode = 
+`#include <iostream>
+using namespace std;
 
-    int main() {
-      
-        cout << "Hello World!";
-        return 0;
+int main() {
+
+  cout << "Hello World!";
+  return 0;
         
-    }`;
+}`;
 
     setCode(defaultCode);
 
@@ -78,7 +78,7 @@ function CodeEditor() {
   };
   
   return (
-    <div className="code-editor-container h-full w-2/3 bg-white gap-3 flex">
+    <div className="code-editor-container h-full w-2/3 bg-white flex">
         <AceEditor
           style={{ height: "100%", width: "100%" }}
           mode="c_cpp"
@@ -91,6 +91,7 @@ function CodeEditor() {
           wrapEnabled={true}
           setOptions={{
             useWorker: false,
+            vScrollBarAlwaysVisible:true,
             enableBasicAutocompletion: true,
             enableLiveAutocompletion: true,
             enableSnippets: false,

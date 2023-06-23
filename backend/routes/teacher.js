@@ -6,6 +6,7 @@ const validate= require('../middlewares/validate');
 const {assignmentValidation} = require('../validation');
 
 router.post('/createAssignment', validate(assignmentValidation.createAssignment),auth(), teacher.createAssignment);
+router.put('/editAssignment/:id', validate(assignmentValidation.editAssignment), auth(), teacher.editAssignment );
 
 
 module.exports = router;
