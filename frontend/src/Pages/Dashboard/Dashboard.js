@@ -4,8 +4,6 @@ import Main from '../../Containers/Main/Main'
 import { useSelector } from 'react-redux'
 import { getAssignments } from '../../utils/requests'
 import Assignments from '../../Components/Assignments/Assignments'
-import { useNavigate } from 'react-router-dom'
-
 
 const Dashboard = (props) => {
 

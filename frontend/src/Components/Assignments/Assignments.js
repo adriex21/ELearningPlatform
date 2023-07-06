@@ -29,10 +29,7 @@ const Assignments = ({ assignments }) => {
           {user?.role === "Teacher" && (
             <button
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
-              onClick={createAssignment}
-            >
-              Create new assignment
-            </button>
+              onClick={createAssignment}>Create new assignment</button>
           )}
         </>
       ) : (

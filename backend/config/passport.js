@@ -6,7 +6,6 @@ const jwtOptions = {
     jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
   };
   
-  
   const tokenTypes = {
       ACCESS: 'access',
       REFRESH: 'refresh',
@@ -14,7 +13,6 @@ const jwtOptions = {
       VERIFY_EMAIL: 'verifyEmail',
     };
     
-  
   const jwtVerify = async (payload, done) => {
     try {
       const user = await User.findOne({_id:payload.sub});

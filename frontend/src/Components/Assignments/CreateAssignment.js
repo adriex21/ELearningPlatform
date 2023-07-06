@@ -26,6 +26,7 @@ const CreateAssignment = () => {
     const cancel = () => {
         navigate("/");
     }
+    
     const handleCreate =  async () => {
 
         const response = await createAssignment(create);

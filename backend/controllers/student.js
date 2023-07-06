@@ -11,12 +11,11 @@ const controller = {
         const student = await User.findById(req.user._id);
 
         if(compare(student.role, "Student")) {
-
             const assignment = await Assignment.findById(req.params.id);
-
-
-            const submission = await Submission.create({submittedBy: req.user_id, submittedFor: req.params.id, answer:req.body.answer});
-            if(!submission) return res.status(500).send({msg: "It didnt work"});
+            const submission = await Submission.create({submittedBy: req.user._id, submittedFor: req.params.id, answer:req.body.answer});
+            assignment.subsmissions.push(submission);
+            assignment.save();
+            if(!submission || !assignment) return res.status(500).send({msg: "It didnt work"});
             return res.status(200).send(submission);
         }
     },

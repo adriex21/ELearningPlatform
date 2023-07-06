@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const {Schema} = mongoose;
 
-const assig = new Schema({
+const assignment = new Schema({
 
     createdBy : {type:mongoose.Schema.Types.ObjectId, ref:'Teacher', required:true},
     createdAt: {type:Date, default: Date.now},
@@ -15,6 +15,6 @@ const assig = new Schema({
     
 })
 
-const Assignment = mongoose.model('Assignments', assig);
+const Assignment = mongoose.model('Assignments', assignment);
 
 module.exports = Assignment;

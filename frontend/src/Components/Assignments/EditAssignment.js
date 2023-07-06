@@ -20,7 +20,7 @@ const EditAssignment = () => {
             const getData = async () => {
                 const res = await getAssignment( assignment_id );
                 if(res) {
-                    setEdit(res);
+                    setEdit(res.assignment);
                 }
             }
             getData()
@@ -30,8 +30,8 @@ const EditAssignment = () => {
     const handleEdit =  async () => {
 
         const response = await editAssignment(assignment_id, edit);
-        console.log(response);
         if(response && response.data) {
+            
             setErrors({});
             return window.location.href=`/view/${assignment_id}`;
 
@@ -64,7 +64,7 @@ const EditAssignment = () => {
                     <div className="relative flex flex-col justify-center items-center pt-5"> 
                     
                         <label htmlFor="title" className="font-bold text-2xl pb-5"> Title </label>
-                        <input id="title" value={edit.title || ''} onChange={(e) => {setEdit({...edit,title: e.target.value})}}
+                        <input id="title" value={edit.title || ''} onChange={(e) => {setEdit({...edit, title: e.target.value})}}
                         type="text" className="outline-none border border-gray-400 h-8 rounded-md text-black mb-4 p-2 w-1/3" placeholder="i.e First homework"/>
                         {errors.title && <span className="text-red-500 block mb-4">{errors.title}</span>}
 
@@ -101,9 +101,7 @@ const EditAssignment = () => {
                                 <button onClick={cancel} className="bg-blue-500 text-white p-2 rounded-md">Cancel</button>
                             </div>
                         </div>
-                        
-                       
-
+                    
                     </div>
                 </Main>
     )
