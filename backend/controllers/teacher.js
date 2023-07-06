@@ -58,7 +58,37 @@ const controller = {
         } catch {
             return res.status(502).json({error: 'Something went wrong'})
         }
-    }
+    },
+
+    gradeSubmission : async(req,res) => {
+
+        try {
+
+            const teacher = await User.findById(req.user._id);
+
+            if(compare(teacher.role, "Teacher")) {
+
+                const updatedSubmission = req.body;
+                let submission = await Submission.findById(req.params.id);
+                const assignment = await Assignment.findById(submission.submittedFor)
+
+                if(req.body.grade > assignment.maxGrade ) {
+
+                    return res.status(400).json({error: "Please input a grade lower than the maximum value " + assignment.maxGrade});
+
+                }
+                
+                submission = await Submission.findByIdAndUpdate(req.params.id, updatedSubmission , {new:true});
+                
+                if(!submission) return res.status(502).json({error : 'Submission not found'});
+                return res.status(200).json(submission);
+
+            }
+
+        } catch {
+            return res.status(502).json({error: 'Something went wrong'})
+        }
+    },
 
     
 }

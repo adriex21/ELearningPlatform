@@ -15,6 +15,25 @@ const assignment = new Schema({
     
 })
 
+// Function to check and update assignment statuses
+async function checkAndUpdateAssignmentStatuses() {
+    const currentDate = new Date();
+    const assignmentsToUpdate = await Assignment.find({ dueBy: { $lte: currentDate }, status: 'open' });
+  
+    for (const assignment of assignmentsToUpdate) {
+      assignment.status = 'closed';
+      await assignment.save();
+    }
+  }
+  
+  // Schedule the function to run every minute (adjust the interval as needed)
+  setInterval(() => {
+    checkAndUpdateAssignmentStatuses()
+      .catch((error) => {
+        console.error('Error checking and updating assignment statuses:', error);
+      });
+  }, 60000); // 60000 milliseconds = 1 minute
+
 const Assignment = mongoose.model('Assignments', assignment);
 
 module.exports = Assignment;

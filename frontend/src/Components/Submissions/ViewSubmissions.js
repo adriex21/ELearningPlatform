@@ -33,6 +33,8 @@ const ViewSubmissions = () => {
 
                 <div> {submission.submittedBy.firstName} {submission.submittedBy.lastName} </div>
                 <div> {new Date(submission.submittedAt).toLocaleDateString(undefined, {year: "numeric", month: "long", day: "numeric", hour: "numeric", minute: "numeric", second: "numeric"})} </div>
+                {submission.grade  ? (<> Grade : {submission.grade} </>) : (<div> Not graded yet</div>)} 
+                <div> </div>
                 
               </a>
             </ul>

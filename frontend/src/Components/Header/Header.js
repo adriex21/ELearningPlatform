@@ -24,7 +24,6 @@ const Header = (props) => {
                 <button className="text-white rounded-md px-2 py-2 bg-[#581c87]" onClick={handleLogout}> Logout </button>
             </div>
                     
-                
         </div>
     )
 }

@@ -9,5 +9,6 @@ router.post('/createAssignment', validate(assignmentValidation.createAssignment)
 router.put('/editAssignment/:id', validate(assignmentValidation.editAssignment), auth(), teacher.editAssignment );
 router.get('/getSubmissions/:id', auth(), teacher.getSubmissions);
 router.get('/getSubmission/:id', auth(), teacher.getSubmission);
+router.put('/gradeSubmission/:id', auth(), teacher.gradeSubmission);
 
 module.exports = router;

@@ -158,4 +158,23 @@ export const getSubmission = async(submission_id) => {
   }
 };
 
+export const gradeSubmission = async(submission_id, payload) => {
+
+  try {
+    const response = await axios.put(`http://localhost:3000/api/teacher/gradeSubmission/${submission_id}`, payload , {
+      headers: {
+        "Authorization": "Bearer " + localStorage.getItem("token"),
+        'Content-Type': 'application/json'
+      }
+    });
+    
+    if(response.status === 200 ) return response.data;
+
+   
+  } catch(error){
+    console.log(error);
+    return error.response.data;
+  }
+}
+
   

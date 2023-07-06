@@ -20,14 +20,14 @@ const Dashboard = (props) => {
 
 
     return( 
+
         <Main>
-            <div>
 
                <Assignments assignments={assignments}> </Assignments>
 
-
-            </div>
+        
         </Main>
+        
     )
 }
 
