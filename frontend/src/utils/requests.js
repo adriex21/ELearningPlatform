@@ -177,4 +177,22 @@ export const gradeSubmission = async(submission_id, payload) => {
   }
 }
 
+export const updateTimer = async (assignmentId, timerValue) => {
+  try {
+    const response = await axios.put(
+      `http://localhost:3000/api/assignment/timer/${assignmentId}`,
+      { timer: timerValue }
+    );
+
+    if (response.status === 200) {
+      return response.data;
+    } else {
+      throw new Error('Error updating timer');
+    }
+  } catch (error) {
+    console.error('Error updating timer:', error);
+    throw error;
+  }
+};
+
   

@@ -14,7 +14,7 @@ const controller = {
         if(compare(teacher.role, "Teacher")) {
     
            const assignment = await Assignment.create({ createdBy: req.user._id, title: req.body.title, 
-            type:req.body.type, dueBy: req.body.dueBy, maxGrade: req.body.maxGrade, description:req.body.description});
+            type:req.body.type, dueBy: req.body.dueBy, maxGrade: req.body.maxGrade, description:req.body.description, timer:req.body.timer});
            if(!assignment) return res.status(500).send({ msg: "It didn't work" });
            return res.status(200).send(assignment);
 

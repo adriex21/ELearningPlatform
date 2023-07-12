@@ -10,7 +10,8 @@ const initialData = {
     title:'',
     type:'homework',
     maxGrade:'', 
-    description:''
+    description:'',
+    timer:0,
 }
 
 const CreateAssignment = () => {
@@ -58,12 +59,9 @@ const CreateAssignment = () => {
 
     if(user.role !== "Teacher") return window.location.ref = "/"
 
-    
-
     return(
 
         <div>
-
                 <Main>
                     <div className="relative flex flex-col justify-center items-center pt-5"> 
                     
@@ -89,6 +87,14 @@ const CreateAssignment = () => {
                         </select>
                         {errors.type && <span className="text-red-500 block mb-4">{errors.type}</span>}
 
+                        {create.type === "evaluation" && ( // Render the timer field only when the evaluation type is selected
+                            <>
+                            <label htmlFor="timer" className="relative font-bold text-2xl pb-5">Timer (minutes)</label>
+                            <input id="timer" value={create.timer || ""} onChange={(e) => { setCreate({ ...create, timer: e.target.value })}} type="number"
+                            className="outline-none border border-gray-400 h-8 rounded-md text-black mb-4 p-2 w-1/3" min="0"/>
+                            </>
+                        )}
+
                         <label htmlFor="maxGrade" className="relative font-bold text-2xl pb-5"> Points </label>
                         <input id="maxGrade" value={create.maxGrade || ''} onChange={(e) => {setCreate({...create,maxGrade: e.target.value})}}
                         type="number" className="outline-none border border-gray-400 h-8 rounded-md text-black mb-4 p-2 w-1/3" min='0' max="100" />
@@ -107,7 +113,6 @@ const CreateAssignment = () => {
                         </div>
                     </div>
                 </Main>
-            
         </div>
     )
 }

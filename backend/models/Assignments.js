@@ -11,6 +11,7 @@ const assignment = new Schema({
     status: {type:String, enum:['open', 'closed'], default: 'open'},
     maxGrade: {type:Number, min:0, max:100},
     description: {type:String, required:true},
+    timer: {type:Number},
     subsmissions:[{type:mongoose.Schema.Types.ObjectId, ref: 'Submission'}]
     
 })

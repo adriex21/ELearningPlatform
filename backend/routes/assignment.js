@@ -1,3 +1,10 @@
-const User = require('../models/Users');
-const Assignment = require('../models/Assignments');
-const Submission = require('../models/Submission');
+const express = require("express");
+const router = express();
+const assignment= require('../controllers/assignment');
+const auth = require('../middlewares/auth');
+
+router.put("/timer/:id", assignment.setTimer);
+
+
+
+module.exports = router;
