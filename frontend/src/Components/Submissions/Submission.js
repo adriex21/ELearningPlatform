@@ -13,17 +13,14 @@ const Submission = () => {
     const { user } = useSelector((state) => state.user);
     const { assignment_id } = useParams();
     const [ data, setData ] = useState();
-    const [code, setCode] = useState(() => {
-        const storedCode = localStorage.getItem('code');
-        return storedCode ? storedCode : defaultCode;
-      });
+    const [code, setCode] = useState(defaultCode);
     const [ timer, setTimer] = useState();
     const navigate = useNavigate();
 
     useEffect(() => {
         const getData = async () => {
             const data = await getAssignment(assignment_id);
-            if(data) setData(data);
+            if(data) setData(data); 
             if (data.assignment.type === 'evaluation') {
                 const storedTimer = localStorage.getItem('assignmentTimer');
                 const initialTimer = storedTimer ? parseInt(storedTimer) : data.assignment.timer * 60;

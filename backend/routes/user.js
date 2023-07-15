@@ -10,6 +10,7 @@ router.post('/login', validate(userValidation.userLogin), user.login);
 router.get('/getUser', auth(), user.getUser);
 router.get('/getAssignments', auth(), user.getAssignments);
 router.get('/getAssignment/:id', auth(), user.getAssignment);
+router.get('/getCourses', auth(), user.getCourses);
 
 
 

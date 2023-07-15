@@ -2,6 +2,7 @@ const { compare } = require('bcryptjs');
 const User = require('../models/Users');
 const Assignment = require('../models/Assignments');
 const Submission = require('../models/Submission');
+const Course = require('../models/Courses');
 
 
 
@@ -89,6 +90,25 @@ const controller = {
             return res.status(502).json({error: 'Something went wrong'})
         }
     },
+
+    createCourse : async(req,res) => {
+
+        try{
+
+            const teacher = await User.findById(req.user._id);
+
+            if(compare(teacher.role, "Teacher")) {
+
+                const course = await Course.create({instructor: req.user._id, name: req.body.name, description:req.body.description});
+                   if(!course) return res.status(500).send({ msg: "It didn't work" });
+                   return res.status(200).send(course);
+                
+            }
+
+        } catch {
+            return res.status(502).json({error: 'Something went wrong'})
+        }
+    }
 
     
 }

@@ -1,29 +1,24 @@
-
-import { useEffect, useState } from 'react'
 import Main from '../../Containers/Main/Main'
 import { useSelector } from 'react-redux'
-import { getAssignments } from '../../utils/requests'
-import Assignments from '../../Components/Assignments/Assignments'
+
 
 const Dashboard = (props) => {
 
     const { user } = useSelector((state) => state.user)
-    const [assignments, setAssigments] = useState([]);
-
-    useEffect(()=> {
-        const getData = async () => {
-            const res = await getAssignments();
-            if(res) setAssigments(res);
-        }
-        getData()
-    },[])
-
 
     return( 
 
         <Main>
-
-               <Assignments assignments={assignments}> </Assignments>
+            <div className="flex flex-col mt-20 ml-20">
+                <div className="border border-gray-400 rounded-md w-fit p-5 mb-10">
+                    <a href='/assignments'>View assignments</a>
+                </div>
+                <div className="border border-gray-400 rounded-md w-fit p-5 mb-10">
+                    <a href='/courses'>View courses </a>
+                </div>
+            </div>
+                
+               
 
         
         </Main>

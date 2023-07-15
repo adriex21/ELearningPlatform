@@ -15,7 +15,7 @@ const Header = (props) => {
     }, [])
 
     return(
-        <div className="bg-[#171723] w-full h-20 flex items-center px-10 justify-between">
+        <div className="fixed top-0 left-0 right-0 z-50 bg-[#171723] w-full h-20 flex items-center px-10 justify-between">
 
             <button className="text-white text-2xl font-bold "> <a href='/'>E-learning platform</a> </button>
 

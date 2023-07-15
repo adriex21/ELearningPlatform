@@ -5,6 +5,7 @@ const bcrypt = require('bcryptjs');
 const CryptoJS = require('crypto-js');
 const Assignment = require('../models/Assignments');
 const Submission = require('../models/Submission');
+const Course = require('../models/Courses');
 require('dotenv').config();
 
 
@@ -72,9 +73,8 @@ const controller = {
 
     getAssignments: async(req,res) => {
 
-        Assignment.find({
-
-        }).then((assignments) => {
+        Assignment.find({})
+        .then((assignments) => {
             res.status(200).send(assignments);
         }).catch(err => {
             res.status(500).send(err)
@@ -102,6 +102,21 @@ const controller = {
             return res.status(502).json({ error: 'Something went wrong' });
         }
     },
+
+    getCourses: async (req,res) => {
+
+            Course.find({})
+            .populate('instructor')
+            .exec()
+            .then((courses) => {
+                return res.status(200).send(courses)
+            })
+            .catch(err=> {
+                return res.status(500).send(err)
+            })
+
+        }, 
+    
 
   
 }

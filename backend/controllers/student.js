@@ -12,7 +12,8 @@ const controller = {
 
         if(compare(student.role, "Student")) {
             const assignment = await Assignment.findById(req.params.id);
-            const submission = await Submission.create({submittedBy: req.user._id, submittedFor: req.params.id, answer:req.body.answer});
+            if(assignment.status === 'closed') return res.status(400).send({msg:"Status closed"});
+            const submission = await Submission.create({submittedBy: req.user._id, submittedFor: req.params.id, answer:req.body.answer, timer:assignment.timer});
             assignment.subsmissions.push(submission);
             assignment.save();
             if(!submission || !assignment) return res.status(500).send({msg: "It didnt work"});

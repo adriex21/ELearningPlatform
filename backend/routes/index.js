@@ -3,7 +3,8 @@ const router = express.Router();
 const userRouter = require('./user');
 const teacherRouter=  require('./teacher');
 const studentRouter = require('./student');
-const assignmentRouter = require('./assignment');
+const assignmentRouter = require('./submission');
+const submissionRouter = require('./submission');
 
 router.use('/user', userRouter);
 router.use('/teacher', teacherRouter);

@@ -12,6 +12,10 @@ import EditAssignment from './Components/Assignments/EditAssignment';
 import Submission from './Components/Submissions/Submission';
 import ViewSubmissions from './Components/Submissions/ViewSubmissions';
 import GradeSubmission from './Components/Submissions/GradeSubmission'
+import AssignmentsPage from './Pages/Assignments/AssignmentsPage';
+import Courses from './Pages/Courses/Courses';
+import ViewCourse from './Components/Courses/ViewCourse';
+import CreateCourse from './Components/Courses/CreateCourse';
 
 
 function App() {
@@ -58,6 +62,22 @@ function App() {
                <Route
                path='/grade/:submission_id'
                element={<Guard> <GradeSubmission/> </Guard>}
+               />
+               <Route
+               path='/assignments'
+               element={<Guard><AssignmentsPage/></Guard>}
+               />
+               <Route
+               path='/courses'
+               element={<Guard><Courses/></Guard>}
+               />
+               <Route
+               path="/viewCourse/:course_id"
+               element={<Guard><ViewCourse/></Guard>}
+               />
+               <Route
+               path="/createCourse"
+               element={<Guard><CreateCourse/></Guard>}
                />
         </Routes>
       </BrowserRouter>

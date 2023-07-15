@@ -2,9 +2,11 @@ import Header from '../../Components/Header/Header'
 
 const Main = (props) => {
     return(
-        <div className="w-[100vw] h-[100vh] flex flex-col">
+        <div className="h-screen flex flex-col">
+            
             <Header></Header>
-            {props.children}
+            <div className="flex-grow overflow-y-auto mt-20">{props.children}</div>
+            
         
         </div>
     )

@@ -8,7 +8,8 @@ const submission = new Schema({
    submittedAt: {type:Date, default:Date.now},
    answer:{type:String},
    grade: {type:Number, min:0, max:100},
-   feedback : {type:String}
+   feedback : {type:String},
+   timer: {type:Number}
 })
 
 const Submission = mongoose.model('Submission', submission);
