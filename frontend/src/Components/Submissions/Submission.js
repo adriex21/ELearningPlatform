@@ -7,6 +7,7 @@ import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import CodeEditor from "../CodeEditor/CodeEditor";
 import style from '../../assets/css/markdown-styles.module.css'
 import defaultCode from "../../assets/fixtures/defaultCode";
+import {DateTime} from 'luxon'
 
 const Submission = () => {
 
@@ -14,50 +15,22 @@ const Submission = () => {
     const { assignment_id } = useParams();
     const [ data, setData ] = useState();
     const [code, setCode] = useState(defaultCode);
-    const [ timer, setTimer] = useState();
     const navigate = useNavigate();
 
     useEffect(() => {
         const getData = async () => {
+
             const data = await getAssignment(assignment_id);
             if(data) setData(data); 
-            if (data.assignment.type === 'evaluation') {
-                const storedTimer = localStorage.getItem('assignmentTimer');
-                const initialTimer = storedTimer ? parseInt(storedTimer) : data.assignment.timer * 60;
-                setTimer(initialTimer); // Set the initial timer value from sessionStorage or assignment data
-              }
+            
         }
         getData()
     }, [assignment_id])
 
-    useEffect(() => {
-        const intervalId = setInterval(() => {
-          setTimer((prevTimer) => {
-            if (prevTimer > 0) {
-              const updatedTimer = prevTimer - 1;
-              localStorage.setItem('assignmentTimer', updatedTimer.toString()); // Store the updated timer value in sessionStorage
-              return updatedTimer;
-            } else {
-              clearInterval(intervalId);
-              return prevTimer;
-            }
-          });
-        }, 1000);
-    
-        return () => {
-          clearInterval(intervalId);
-        };
-      }, []);
-    
-      useEffect(() => {
-        if (timer === 0 && data?.submission?.length <= 0 ) {
-          submit();
-        }
-      }, [timer]);
+    useEffect(()=> {
+        
+    })
 
-    useEffect(() => {
-        localStorage.setItem('code', code); // Store the code in localStorage whenever it changes
-    }, [code]);
 
     const submit = async () => {
         const response = await sendSubmission({
@@ -81,9 +54,8 @@ const Submission = () => {
 
     return (
         <Main> 
-            {data?.submission?.length > 0 ?
+            {data?.submission?.[0]?.answer.length> 0 ?
                 <>
-
                     <div className='flex w-full h-full'>
                         <div className='h-full w-1/2 bg-[white]'> 
                             <ReactMarkdown className={style.reactMarkDown} children={data?.assignment?.description}></ReactMarkdown>
@@ -91,7 +63,6 @@ const Submission = () => {
                         <CodeEditor
                         code={data?.submission[0]?.answer}
                         setCode={setCode}
-
                         />
                     </div>
 
@@ -102,12 +73,16 @@ const Submission = () => {
                         <div className='h-full w-1/2 bg-[white]'> 
                             <ReactMarkdown className={style.reactMarkDown} children={data?.assignment?.description}></ReactMarkdown>
                             <div className='absolute bottom-5 left-5 flex flex-row gap-5'>
-                                {timer > 0 && ( // Display the timer only if it's greater than 0
-                                <div className="bg-[#581c87] hover:bg-[#1c092a] text-white font-bold py-2 px-4 rounded-full">Time left: {formatTime(timer)}</div>
-                                )}
-                                <button onClick={submit} className="bg-[#581c87] hover:bg-[#1c092a] text-white font-bold py-2 px-4 rounded-full">
-                                    Submit assignment
-                                </button>
+
+                                <div className="bg-[#581c87] hover:bg-[#1c092a] text-white font-bold py-2 px-4 rounded-full">Time left: </div>
+                                
+                                {data?.assignment.status === "open" && (
+                                    <button onClick={submit} className="bg-[#581c87] hover:bg-[#1c092a] text-white font-bold py-2 px-4 rounded-full">
+                                        Submit assignment
+                                    </button>
+
+                                ) }
+                               
                             </div>
                             
                         </div>

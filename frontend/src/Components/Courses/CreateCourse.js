@@ -49,6 +49,8 @@ const CreateCourse = () => {
         }
     }
 
+    if (user.role !== 'Teacher') return window.location.href='/courses'
+
     return(
 
        <Main>

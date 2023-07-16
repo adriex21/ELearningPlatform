@@ -58,8 +58,8 @@ const GradeSubmission = () => {
                 </button>
             </div>
             {gradingFormOpen && (
-                <div className="fixed top-0 left-0 right-0 bottom-0 flex flex-col items-center justify-center bg-black bg-opacity-80">
-                    <div className="fixed w-1/2 top-0 left-0 right-0 bottom-0 flex flex-col items-center justify-center"> 
+                <div className="fixed top-0 left-0 right-0 bottom-0 z-[100] flex flex-col items-center justify-center bg-black bg-opacity-80">
+                    <div className="fixed top-0 left-0 right-0 bottom-0 flex flex-col items-center justify-center"> 
                         <label htmlFor="feedback" className="font-bold text-2xl pb-5 text-white">Feedback</label>
                         <textarea id="feedback" value={data.feedback || ''} onChange={(e) => {setData({...data, feedback: e.target.value})}}
                         type="text" className="outline-none border border-gray-400 caret-black-400 rounded-md mb-4 text-black w-1/3" placeholder="i.e Feedback"/>

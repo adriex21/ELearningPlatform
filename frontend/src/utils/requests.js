@@ -146,7 +146,7 @@ export const getSubmissions = async(assignment_id) => {
 
 export const getSubmission = async(submission_id) => {
   try {
-    const response = await axios.get(`http://localhost:3000/api/teacher/getSubmission/${submission_id}`, {
+    const response = await axios.get(`http://localhost:3000/api/user/getSubmission/${submission_id}`, {
       headers: {
         "Authorization": "Bearer " + localStorage.getItem("token"),
         'Content-Type': 'application/json'
@@ -208,5 +208,26 @@ export const createCourse = async(payload) => {
     return error.response.data;
   }
 }
+
+export const getCourse = async(course_id) => {
+  try {
+    const response = await axios.get(`http://localhost:3000/api/user/getCourse/${course_id}`, {
+      headers: {
+        "Authorization": "Bearer " + localStorage.getItem("token"),
+        'Content-Type': 'application/json'
+      }
+    });
+    return response.data;
+  } catch(err){
+    console.log(err);
+  }
+};
+
+export const timer = async(assignment_id) => {
+
+
+}
+
+
 
   

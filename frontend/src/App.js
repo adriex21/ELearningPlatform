@@ -16,6 +16,8 @@ import AssignmentsPage from './Pages/Assignments/AssignmentsPage';
 import Courses from './Pages/Courses/Courses';
 import ViewCourse from './Components/Courses/ViewCourse';
 import CreateCourse from './Components/Courses/CreateCourse';
+import CreateModule from './Components/Modules/CreateModule';
+import ViewModule from './Components/Modules/ViewModule';
 
 
 function App() {
@@ -78,6 +80,13 @@ function App() {
                <Route
                path="/createCourse"
                element={<Guard><CreateCourse/></Guard>}
+               /> <Route
+               path="/createModule/:course_id"
+               element={<Guard><CreateModule/></Guard>}
+               />
+               <Route
+               path='/viewModule'
+               element={<Guard><ViewModule/></Guard>}
                />
         </Routes>
       </BrowserRouter>

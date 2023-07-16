@@ -48,18 +48,7 @@ const controller = {
         }
     },
     
-    getSubmission : async(req,res) => {
-
-        try{
-
-            const submission = await Submission.findById(req.params.id).populate('submittedFor').exec();
-            if(!submission) return res.status(502).json({error : 'Submission not found'});
-            return res.status(200).send(submission);
-            
-        } catch {
-            return res.status(502).json({error: 'Something went wrong'})
-        }
-    },
+    
 
     gradeSubmission : async(req,res) => {
 
@@ -107,6 +96,31 @@ const controller = {
 
         } catch {
             return res.status(502).json({error: 'Something went wrong'})
+        }
+    },
+
+    createModule: async(req,res) => {
+
+        try{
+
+            const teacher = await User.findById(req.user._id);
+
+            if(compare(teacher.role, "Teacher")) {
+
+                let course = await Course.findById(req.params.id);
+                if(!course) return res.status(404).send({ msg: "Course not found" });
+                const module = req.body;
+                
+                course.modules.push(module);
+                const updatedCourse = await course.save();
+                return res.status(200).json(updatedCourse);
+                
+            }
+
+
+        } catch(error) {
+            console.log(error)
+            return res.status(500).json({error:'Something went wrong'})
         }
     }
 

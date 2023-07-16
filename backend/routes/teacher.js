@@ -8,8 +8,8 @@ const {assignmentValidation, courseValidation} = require('../validation');
 router.post('/createAssignment', validate(assignmentValidation.createAssignment),auth(), teacher.createAssignment);
 router.put('/editAssignment/:id', validate(assignmentValidation.editAssignment), auth(), teacher.editAssignment );
 router.get('/getSubmissions/:id', auth(), teacher.getSubmissions);
-router.get('/getSubmission/:id', auth(), teacher.getSubmission);
 router.put('/gradeSubmission/:id', auth(), teacher.gradeSubmission);
 router.post('/createCourse', validate(courseValidation.createCourse), auth(), teacher.createCourse);
+router.put('/createModule/:id', auth(), teacher.createModule);
 
 module.exports = router;

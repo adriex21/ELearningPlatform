@@ -103,6 +103,19 @@ const controller = {
         }
     },
 
+    getSubmission : async(req,res) => {
+
+        try{
+
+            const submission = await Submission.findById(req.params.id).populate('submittedFor').exec();
+            if(!submission) return res.status(502).json({error : 'Submission not found'});
+            return res.status(200).send(submission);
+            
+        } catch {
+            return res.status(502).json({error: 'Something went wrong'})
+        }
+    },
+
     getCourses: async (req,res) => {
 
             Course.find({})
@@ -116,9 +129,18 @@ const controller = {
             })
 
         }, 
-    
 
-  
+    getCourse: async(req, res) => {
+
+        Course.findById(req.params.id)
+        .then((course)=> {
+            return res.status(200).send(course)
+        })
+        .catch(err => {
+            return res.status(500).send(err)
+        })
+    }
+    
 }
 
 module.exports = controller;

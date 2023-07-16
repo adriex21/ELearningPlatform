@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const {Schema} = mongoose;
+const {DateTime} = require('luxon')
 
 const submission = new Schema({
 
@@ -9,7 +10,8 @@ const submission = new Schema({
    answer:{type:String},
    grade: {type:Number, min:0, max:100},
    feedback : {type:String},
-   timer: {type:Number}
+   startTime: {type:Date},
+   endTime: {type:Date}
 })
 
 const Submission = mongoose.model('Submission', submission);
