@@ -14,11 +14,24 @@ const controller = {
         if(compare(student.role, "Student")) {
             const assignment = await Assignment.findById(req.params.id);
             if(assignment.status === 'closed') return res.status(400).send({msg:"Status closed"});
-            const submission = await Submission.create({submittedBy: req.user._id, submittedFor: req.params.id, answer:req.body.answer});
-            assignment.subsmissions.push(submission);
-            assignment.save();
-            if(!submission || !assignment) return res.status(500).send({msg: "It didnt work"});
-            return res.status(200).send(submission);
+
+            const updatedSubmission = req.body.answer
+            let submission = await Submission.findOneAndUpdate({submittedBy: req.user._id, submittedFor:req.params.id}, {answer: updatedSubmission, submittedAt: DateTime.now()}, {new:true})
+
+            if(submission) {
+                
+                assignment.subsmissions.push(submission);
+                assignment.save();
+                return res.status(200).send(submission);
+
+            } else {
+
+                submission = await Submission.create({submittedBy: req.user._id, submittedFor: req.params.id, answer:req.body.answer, submittedAt: DateTime.now()});
+                assignment.subsmissions.push(submission);
+                assignment.save();
+                return res.status(200).send(submission);
+            }
+            
         }
     },
 
@@ -30,8 +43,14 @@ const controller = {
             const assignment = await Assignment.findById(req.params.id);
             if(assignment.status === 'closed') return res.status(400).send({msg:"Status closed"});
             const time = DateTime.now();
-            const submission = await Submission.create({submittedBy: req.user._id, submittedFor: req.params.id, startTime:time,endTime:time.plus({minutes:assignment.timer})});
-            return res.status(200).send(submission)
+            let submission = await Submission.findOne({submittedBy: req.user._id, submittedFor:req.params.id});
+            if(submission) {
+                return res.status(200).send(submission)
+            } else {
+                submission = await Submission.create({submittedBy: req.user._id, submittedFor: req.params.id, startTime:time,endTime:time.plus({minutes:assignment.timer})});
+                return res.status(200).send(submission)
+            }
+             
         }
     }
 }

@@ -223,10 +223,27 @@ export const getCourse = async(course_id) => {
   }
 };
 
-export const timer = async(assignment_id) => {
+
+export const timer = async (assignment_id) => {
+  try {
+    const response = await axios.post(
+      `http://localhost:3000/api/student/timer/${assignment_id}`,
+      {},
+      {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+          "Content-Type": "application/json"
+        }
+      }
+    );
+
+    if (response.status === 200) return response.data;
+  } catch (error) {
+    return error.response.data;
+  }
+};
 
 
-}
 
 
 

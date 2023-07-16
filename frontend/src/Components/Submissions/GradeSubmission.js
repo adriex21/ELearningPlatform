@@ -63,7 +63,7 @@ const GradeSubmission = () => {
                         <label htmlFor="feedback" className="font-bold text-2xl pb-5 text-white">Feedback</label>
                         <textarea id="feedback" value={data.feedback || ''} onChange={(e) => {setData({...data, feedback: e.target.value})}}
                         type="text" className="outline-none border border-gray-400 caret-black-400 rounded-md mb-4 text-black w-1/3" placeholder="i.e Feedback"/>
-                        <label htmlFor="feedback" className="font-bold text-2xl pb-5 text-white">Grade</label>
+                        <label htmlFor="grade" className="font-bold text-2xl pb-5 text-white">Grade</label>
                         <input id="grade" value={data.grade || ''} onChange={(e) => {setData({...data,grade: e.target.value})}}
                         type="number" className="outline-none border border-gray-400 h-8 rounded-md text-black mb-4 p-2 w-1/3" min='0' max="100" />
                         {errors && <span className="text-red-500 block mb-4">{errors}</span>}
