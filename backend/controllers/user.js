@@ -73,7 +73,7 @@ const controller = {
 
     getAssignments: async(req,res) => {
 
-        Assignment.find({})
+        Assignment.find({}).populate('course').exec()
         .then((assignments) => {
             res.status(200).send(assignments);
         }).catch(err => {

@@ -44,8 +44,8 @@ const AssignmentTeacher = () => {
         <div className='relative h-full w-1/2 bg-[white]'> 
         <ReactMarkdown className={style.reactMarkDown} children={assignment.description}></ReactMarkdown>
         <div className='absolute bottom-5 left-5 flex flex-row gap-5'>
-          <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full' onClick={edit}> Edit </button>
-          <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full' onClick={viewSubmissions}> View submissions </button>
+          <button className='bg-[#581c87] hover:bg-[#1c092a] text-white font-bold py-2 px-4 rounded-md' onClick={edit}> Edit </button>
+          <button className='bg-[#581c87] hover:bg-[#1c092a] text-white font-bold py-2 px-4 rounded-md' onClick={viewSubmissions}> View submissions </button>
         </div>
         
         </div>

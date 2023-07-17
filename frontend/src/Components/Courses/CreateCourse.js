@@ -5,8 +5,7 @@ import Main from "../../Containers/Main/Main";
 import { createCourse } from "../../utils/requests";
 
 const initialData = {
-    name:'',
-    description:''
+    name:''
 }
 
 const CreateCourse = () => {
@@ -64,8 +63,8 @@ const CreateCourse = () => {
                 type="text" className="outline-none border border-gray-400 h-8 rounded-md text-black mb-4 p-2 w-1/3" placeholder="i.e Information about the course"/>
                 <div className="w-1/3"> 
                     <div className="flex justify-around"> 
-                        <button onClick={handleCreate} className="bg-blue-500 text-white p-2 rounded-md">Create</button>
-                        <button onClick={cancel} className="bg-blue-500 text-white p-2 rounded-md">Cancel</button>
+                        <button onClick={handleCreate} className="bg-[#581c87] hover:bg-[#1c092a] text-white p-2 rounded-md">Create</button>
+                        <button onClick={cancel} className="bg-[#581c87] hover:bg-[#1c092a] text-white p-2 rounded-md">Cancel</button>
                     </div>
                 </div>
             </div>

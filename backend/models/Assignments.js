@@ -5,6 +5,7 @@ const assignment = new Schema({
 
     createdBy : {type:mongoose.Schema.Types.ObjectId, ref:'Teacher', required:true},
     createdAt: {type:Date, default: Date.now},
+    course : {type:mongoose.Schema.Types.ObjectId, ref:'Courses', required:true},
     dueBy: {type:Date , required:true},
     title: {type:String, required:true},
     type: {type:String, required:true, enum: ['homework', 'evaluation']},
@@ -27,7 +28,7 @@ async function checkAndUpdateAssignmentStatuses() {
     }
   }
   
-  // Schedule the function to run every minute (adjust the interval as needed)
+  // Schedule the function to run every minute
   setInterval(() => {
     checkAndUpdateAssignmentStatuses()
       .catch((error) => {

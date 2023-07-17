@@ -29,7 +29,7 @@ const Courses = (props) => {
 
             <div className="pt-20 pl-20 w-fit"> 
             {user.role === "Teacher" && (
-                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold mb-10 py-2 px-4 rounded-full"
+                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold mb-10 py-2 px-4 rounded-md"
                     onClick={createCourse}> Create course </button>
             )}
                 {courses.length > 0 ? (

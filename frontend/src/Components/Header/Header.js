@@ -15,13 +15,17 @@ const Header = (props) => {
     }, [])
 
     return(
-        <div className="fixed top-0 left-0 right-0 z-50 bg-[#171723] w-full h-20 flex items-center px-10 justify-between">
+        <div className="fixed top-0 left-0 right-0 z-50 bg-[#171723] h-screen w-[10vw] flex-col px-10 justify-between">
 
-            <button className="text-white text-2xl font-bold "> <a href='/'>E-learning platform</a> </button>
+            <button className="mt-10 text-white text-2xl font-bold items-center"> <a href='/'>E-learning platform</a> </button>
 
-            <div className="flex flex-row gap-4 items-center">
-                <span className="text-white">{user?.firstName} {user?.lastName} </span>
-                <button className="text-white rounded-md px-2 py-2 bg-[#581c87]" onClick={handleLogout}> Logout </button>
+            <div className="mt-20 flex flex-col gap-4 items-center text-white">
+                <a href="/viewProfile" className="font-semibold">{user?.firstName} {user?.lastName} </a>
+                <a href="/assignments" > Assignments </a>
+                <a href="/courses"> Courses </a>
+                <a href="/grades"> Marks </a>
+
+                <button className="text-white rounded-md px-2 py-2 bg-[#581c87]" onClick={handleLogout}> Sign out </button>
             </div>
                     
         </div>

@@ -90,9 +90,9 @@ const Submission = () => {
       {data?.submission?.[0]?.answer?.length > 0 ? (
         <>
           <div className='flex w-full h-full'>
-            <div className='h-full w-1/2 bg-[white]'>
+            <div className='relative h-full w-1/2 bg-[white]'>
               <ReactMarkdown className={style.reactMarkDown} children={data?.assignment?.description}></ReactMarkdown>
-              <button onClick={viewResults} className="absolute bottom-5 left-5 bg-[#581c87] hover:bg-[#1c092a] text-white font-bold py-2 px-4 rounded-md"> View results </button>
+                <button onClick={viewResults} className="absolute bottom-5 left-5 bg-[#581c87] hover:bg-[#1c092a] text-white font-bold py-2 px-4 rounded-md"> View results </button>
             </div>
             <CodeEditor code={data?.submission[0]?.answer} setCode={setCode} />
           </div>
@@ -110,8 +110,8 @@ const Submission = () => {
         </>
       ) : (
         <>
-          <div className='flex flex-row w-full h-full'>
-            <div className='h-full w-1/2 bg-[white]'>
+          <div className='flex w-full h-full'>
+            <div className='relative h-full w-1/2 bg-[white]'>
               <ReactMarkdown className={style.reactMarkDown} children={data?.assignment?.description}></ReactMarkdown>
               <div className='absolute bottom-5 left-5 flex flex-row gap-5'>
                 {data?.assignment.status === 'open' && (

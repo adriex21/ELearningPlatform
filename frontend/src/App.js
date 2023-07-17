@@ -18,6 +18,7 @@ import ViewCourse from './Components/Courses/ViewCourse';
 import CreateCourse from './Components/Courses/CreateCourse';
 import CreateModule from './Components/Modules/CreateModule';
 import ViewModule from './Components/Modules/ViewModule';
+import ViewProfile from './Pages/Profile/ViewProfile';
 
 
 function App() {
@@ -50,7 +51,7 @@ function App() {
             element={<Guard><Submission/></Guard>}
              />
              <Route
-             path="/createAssignment"
+             path="/createAssignment/:course_id"
              element={<Guard><CreateAssignment/> </Guard>}
               />
               <Route
@@ -87,6 +88,14 @@ function App() {
                <Route
                path='/viewModule'
                element={<Guard><ViewModule/></Guard>}
+               />
+               <Route
+               path='/viewProfile'
+               element={<Guard><ViewProfile/></Guard>}
+               />
+               <Route
+               path='/grades'
+               element={<Guard><ViewProfile/></Guard>}
                />
         </Routes>
       </BrowserRouter>

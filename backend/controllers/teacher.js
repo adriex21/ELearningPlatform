@@ -13,10 +13,16 @@ const controller = {
         const teacher = await User.findById(req.user._id);
 
         if(compare(teacher.role, "Teacher")) {
+
+            const course = await Course.findById(req.params.id);
+            if(!course) return res.status(404).send({msg: "Course not found"});
+
     
-           const assignment = await Assignment.create({ createdBy: req.user._id, title: req.body.title, 
+            const assignment = await Assignment.create({createdBy: req.user._id, title: req.body.title, course:req.params.id,
             type:req.body.type, dueBy: req.body.dueBy, maxGrade: req.body.maxGrade, description:req.body.description, timer:req.body.timer});
-           if(!assignment) return res.status(500).send({ msg: "It didn't work" });
+            if(!assignment) return res.status(500).send({ msg: "It didn't work" });
+            course.assignments.push(assignment);
+            course.save();
            return res.status(200).send(assignment);
 
         } 
@@ -69,6 +75,28 @@ const controller = {
                 }
                 
                 submission = await Submission.findByIdAndUpdate(req.params.id, updatedSubmission , {new:true});
+
+                const user = await User.findById(submission.submittedBy);
+                if(!user) return res.status(400).send({msg:"User not found"});
+
+                const existingTestIndex = user.testScores.findIndex(
+                    (score) => score.test.toString() === submission._id.toString()
+                  );
+            
+                  if (existingTestIndex !== -1) {
+                    // Update the existing test score
+                    user.testScores[existingTestIndex].score = req.body.grade;
+                    
+                  } else {
+                    // Add a new test score entry
+                    user.testScores.push({
+                      course: assignment.course,
+                      test: submission._id,
+                      score: req.body.grade,
+                    });
+                  }
+
+                await user.save();
                 
                 if(!submission) return res.status(502).json({error : 'Submission not found'});
                 return res.status(200).json(submission);
@@ -90,6 +118,8 @@ const controller = {
 
                 const course = await Course.create({instructor: req.user._id, name: req.body.name, description:req.body.description});
                    if(!course) return res.status(500).send({ msg: "It didn't work" });
+                   teacher.coursesManaged.push(course);
+                   await teacher.save();
                    return res.status(200).send(course);
                 
             }

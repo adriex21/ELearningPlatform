@@ -11,11 +11,8 @@ const user = new Schema({
     password: {type:String},
     email: {type:String},
     role: {type:String, required:true, enum: ['Student', 'Teacher']},
-    enrolledCourses : [{type:mongoose.Schema.Types.ObjectId, ref:"Courses"}],
-    performanceData: {grades: [{course: {type: mongoose.Schema.Types.ObjectId, ref:"Courses"},grade: {type: Number,required: true}}]},
-    testScores: [{course: {type: mongoose.Schema.Types.ObjectId, ref:"Courses"},test: {type: String},score: {type: Number}}],
+    testScores:  [{course: {type: mongoose.Schema.Types.ObjectId, ref:"Courses"}, test: {type: mongoose.Schema.Types.ObjectId, ref:"Submission"}, score: {type: Number}}],
     coursesManaged : [{type:mongoose.Schema.Types.ObjectId, ref:"Courses"}],
-    
 })
 
 user.pre('save', async function (next) {

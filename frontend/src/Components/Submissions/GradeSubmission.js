@@ -43,19 +43,21 @@ const GradeSubmission = () => {
         } else {
             setGradingFormOpen(false);
             setErrors(''); 
+            navigate(`/viewSubmissions/${data.submittedFor._id}`)
         }
     }
 
     return (
         <Main> 
             <div className='flex w-full h-full'>
-                <div className='h-full w-1/2 bg-[white]'> 
+                <div className='relative h-full w-1/2 bg-[white]'> 
                     <ReactMarkdown className={style.reactMarkDown} children={data?.submittedFor.description}></ReactMarkdown>
+                        <button onClick={grade} className="absolute bottom-5 left-5 bg-[#581c87] hover:bg-[#1c092a] text-white font-bold py-2 px-4 rounded-md">
+                        Grade submission
+                        </button>
                 </div>
                 <CodeEditor code={data?.answer} setCode={setCode}/>
-                <button onClick={grade} className="absolute bottom-5 left-5 bg-[#581c87] hover:bg-[#1c092a] text-white font-bold py-2 px-4 rounded-full">
-                    Grade submission
-                </button>
+                
             </div>
             {gradingFormOpen && (
                 <div className="fixed top-0 left-0 right-0 bottom-0 z-[100] flex flex-col items-center justify-center bg-black bg-opacity-80">
@@ -68,8 +70,8 @@ const GradeSubmission = () => {
                         type="number" className="outline-none border border-gray-400 h-8 rounded-md text-black mb-4 p-2 w-1/3" min='0' max="100" />
                         {errors && <span className="text-red-500 block mb-4">{errors}</span>}
                         <div className="flex flex-row justify-center gap-5 "> 
-                            <button onClick={handleGrade} className="bg-blue-500 text-white p-2 rounded-md">Done</button>
-                            <button onClick={cancel} className="z-40 bg-blue-500 text-white p-2 rounded-md">Cancel</button>
+                            <button onClick={handleGrade} className="bg-[#581c87] hover:bg-[#1c092a] text-white p-2 rounded-md">Done</button>
+                            <button onClick={cancel} className="bg-[#581c87] hover:bg-[#1c092a] text-white p-2 rounded-md">Cancel</button>
                         </div>
                     </div>
                      

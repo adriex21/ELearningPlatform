@@ -23,8 +23,10 @@ const AssignmentsPage = (props) => {
 
         <Main>
 
-            
-               <Assignments assignments={assignments}> </Assignments>
+                <div className='pl-20'>
+                    <Assignments assignments={assignments}> </Assignments>
+                </div>
+               
 
         
         </Main>

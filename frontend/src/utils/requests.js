@@ -73,11 +73,11 @@ export const getAssignment = async(assignment_id) => {
   }
 };
 
-export const createAssignment  = async(payload) => {
+export const createAssignment  = async(course_id,payload) => {
 
   try {
 
-    const response = await axios.post('http://localhost:3000/api/teacher/createAssignment', payload, {
+    const response = await axios.post(`http://localhost:3000/api/teacher/createAssignment/${course_id}`, payload, {
         headers: {
           "Authorization": "Bearer " + localStorage.getItem("token"),
           'Content-Type': 'application/json'
@@ -88,7 +88,7 @@ export const createAssignment  = async(payload) => {
       return response;
     } catch (err) {
       console.log(err);
-      return err.response.data;
+      return err.response;
   }
 };
 
@@ -242,6 +242,23 @@ export const timer = async (assignment_id) => {
     return error.response.data;
   }
 };
+
+export const createModule = async(course_id, payload) => {
+  try {
+
+    const response = await axios.put(`http://localhost:3000/api/teacher/createModule/${course_id}`, payload, {
+      headers : {
+        "Authorization" :"Bearer " + localStorage.getItem("token"),
+        "Content-Type" : 'application/json'
+      }
+    })
+    if(response.status === 200 ) return response
+
+  } catch(error) {
+    console.log(error)
+    return error.response.data;
+  }
+}
 
 
 
