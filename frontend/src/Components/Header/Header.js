@@ -20,7 +20,7 @@ const Header = (props) => {
             <button className="mt-10 text-white text-2xl font-bold items-center"> <a href='/'>E-learning platform</a> </button>
 
             <div className="mt-20 flex flex-col gap-4 items-center text-white">
-                <a href="/viewProfile" className="font-semibold">{user?.firstName} {user?.lastName} </a>
+                <p className="font-semibold">{user?.firstName} {user?.lastName} </p>
                 <a href="/assignments" > Assignments </a>
                 <a href="/courses"> Courses </a>
                 {user.role === 'Student'&& (
