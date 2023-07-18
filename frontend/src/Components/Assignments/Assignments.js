@@ -55,9 +55,18 @@ const Assignments = ({ assignments }) => {
             <ul key={assignment._id}>
               <div  className="relative border border-gray-300 rounded-md p-4 mb-4 bg-gray-100 ">
                   <div className="flex flex-col gap-3">
-                  <button onClick={()=>{openAssignment(assignment.type,assignment._id)}}> {assignment.title} </button>
-                  {assignment.status === 'open' ? (<div className="bg-green-500 w-fit text-white font-bold px-3 rounded-md"> {assignment.status} </div>)
-                     : (<div className="bg-red-500 w-fit text-white font-bold px-3 rounded-md">{assignment.status}</div>)}
+                  <button onClick={()=>{openAssignment(assignment.type,assignment._id)}} className="font-semibold "> {assignment.title} </button>
+                  {assignment.status === 'open' ? (
+                    <div className="flex flex-row gap-5">
+                    <div> Status : </div>
+                    <div className="bg-green-500 w-fit text-white font-bold px-3 rounded-md"> {assignment.status}</div>
+                    </div>)
+                     : (
+                      <div className="flex flex-row gap-5">
+                      <div> Status : </div>
+                      <div className="bg-red-500 w-fit text-white font-bold px-3 rounded-md">{assignment.status}</div>
+                      </div>
+                     )}
                      <div> Added : {new Date(assignment.createdAt).toLocaleDateString(undefined, {year: "numeric", month: "long", day: "numeric", hour: "numeric", minute: "numeric"})}</div>
                      <div> Due date : {new Date(assignment.dueBy).toLocaleDateString(undefined, {year: "numeric", month: "long", day: "numeric", hour: "numeric", minute: "numeric"})}</div>
                      

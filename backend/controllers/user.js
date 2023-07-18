@@ -63,7 +63,8 @@ const controller = {
     getUser: async(req,res) => {
         User.findOne(
             { _id: req.user._id }
-        ).then(user =>{
+        ).populate('coursesManaged').populate('testScores.test').exec()
+        .then(user =>{
             res.status(200).send(user);
         }).catch(err => {
             res.status(500).send(err);

@@ -80,7 +80,7 @@ const controller = {
                 if(!user) return res.status(400).send({msg:"User not found"});
 
                 const existingTestIndex = user.testScores.findIndex(
-                    (score) => score.test.toString() === submission._id.toString()
+                    (score) => score.test.toString() === assignment._id.toString()
                   );
             
                   if (existingTestIndex !== -1) {
@@ -91,7 +91,7 @@ const controller = {
                     // Add a new test score entry
                     user.testScores.push({
                       course: assignment.course,
-                      test: submission._id,
+                      test: assignment._id,
                       score: req.body.grade,
                     });
                   }

@@ -11,7 +11,7 @@ const user = new Schema({
     password: {type:String},
     email: {type:String},
     role: {type:String, required:true, enum: ['Student', 'Teacher']},
-    testScores:  [{course: {type: mongoose.Schema.Types.ObjectId, ref:"Courses"}, test: {type: mongoose.Schema.Types.ObjectId, ref:"Submission"}, score: {type: Number}}],
+    testScores:  [{course: {type: mongoose.Schema.Types.ObjectId, ref:"Courses"}, test: {type: mongoose.Schema.Types.ObjectId, ref:"Assignments"}, score: {type: Number}}],
     coursesManaged : [{type:mongoose.Schema.Types.ObjectId, ref:"Courses"}],
 })
 

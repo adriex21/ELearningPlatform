@@ -19,6 +19,7 @@ import CreateCourse from './Components/Courses/CreateCourse';
 import CreateModule from './Components/Modules/CreateModule';
 import ViewModule from './Components/Modules/ViewModule';
 import ViewProfile from './Pages/Profile/ViewProfile';
+import Marks from './Pages/Marks/Marks';
 
 
 function App() {
@@ -95,7 +96,7 @@ function App() {
                />
                <Route
                path='/grades'
-               element={<Guard><ViewProfile/></Guard>}
+               element={<Guard><Marks/></Guard>}
                />
         </Routes>
       </BrowserRouter>
