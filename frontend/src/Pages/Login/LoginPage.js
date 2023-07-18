@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Login } from '../../utils/requests';
 import { useNavigate } from 'react-router-dom';
+import background from '../../assets/pictures/background.gif'
 
 const LoginPage = (props) => {
 
@@ -46,13 +47,13 @@ const LoginPage = (props) => {
 
     return (
 
-        <div className="flex flex-col justify-center items-center h-screen bg-gray-100">
-            <form onSubmit={e => e.preventDefault()} className="bg-blue-200 p-6 rounded shadow-md w-1/3">
+        <div className="flex flex-col justify-center items-center h-screen " style={{backgroundImage:`url(${background})`, backgroundSize: 'cover'}}>
+            <form onSubmit={e => e.preventDefault()} className="p-6 rounded-md shadow-xl w-1/3">
                 {errors.map(error => (
                     <span key={error} className="text-red-500 block mb-4">{error}</span>
                 ))}
 
-                <label htmlFor="email" className="block text-gray-700">Email</label>
+                <label htmlFor="email" className="text-white block">Email</label>
                 <input
                     id="email"
                     value={loginData.email}
@@ -61,7 +62,7 @@ const LoginPage = (props) => {
                     className="outline-none h-8 rounded-md text-black mb-4 p-2 w-full"
                 />
 
-                <label htmlFor="password" className="block text-gray-700">Password</label>
+                <label htmlFor="password" className="block text-white">Password</label>
                 <input
                     id="password"
                     value={loginData.password}
@@ -71,12 +72,12 @@ const LoginPage = (props) => {
                 />
 
                 <div className="flex justify-center mt-4">
-                    <button onClick={handleLogin} className="bg-blue-500 text-white p-2 rounded-md" >Login</button>
+                    <button onClick={handleLogin} className="bg-[#581c87] hover:bg-[#1c092a] text-white p-2 rounded-md" >Login</button>
                 </div>
 
-                <div className="text-center mt-4">
+                <div className="text-white text-center mt-4">
                     <p>Don't have an account?</p>
-                    <button className="text-blue-500 underline hover:text-blue-700 focus:outline-none focus:text-blue-700" onClick={signup}>
+                    <button className="text-[#581c87] underline hover:text-[#1c092a]" onClick={signup}>
                         Sign Up
                     </button>
                 </div>

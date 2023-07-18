@@ -21,7 +21,7 @@ const Marks = () => {
 
         <Main>
 
-            <div className="pt-10 pl-20 w-full pr-20"> 
+            <div className="pt-10 pl-20 w-full pr-20 mb-5"> 
             <div className="text-3xl font-semibold font-sans mb-10"> Marks </div>
             {courses.length > 0 && (
                     <div className="flex flex-col gap-20">

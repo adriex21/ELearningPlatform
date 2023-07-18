@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { SignUp } from '../../utils/requests'
 import { useNavigate } from 'react-router-dom';
+import background from '../../assets/pictures/background.gif'
+
 
 const initialData = {
     firstName:'', 
@@ -54,21 +56,21 @@ const Register  = () => {
     
     
     return ( 
-        <div className="flex flex-col justify-center items-center h-screen bg-gray-100">
+        <div className="flex flex-col justify-center items-center h-screen " style={{backgroundImage:`url(${background})`, backgroundSize: 'cover'}}>
     
-        <form onSubmit={e => e.preventDefault()} className="bg-blue-200 p-6 rounded shadow-md w-1/3">
+        <form onSubmit={e => e.preventDefault()} className="p-6 rounded shadow-xl w-1/3">
     
-            <label htmlFor="firstName" className="block text-gray-700">First name</label>
+            <label htmlFor="firstName" className="block text-white">First name</label>
             <input id="firstName" value={signUp.firstName || ''} onChange={(e) => {setSignUp({...signUp,firstName: e.target.value})}}
             type="text" className="outline-none h-8 rounded-md text-black mb-4 p-2 w-full"/>
             {errors.firstName && <span className="text-red-500 block mb-4">{errors.firstName}</span>}
     
-            <label htmlFor="lastName" className="block text-gray-700">Last name</label>
+            <label htmlFor="lastName" className="block text-white">Last name</label>
             <input id="lastName" value={signUp.lastName || ''} onChange={(e) => {setSignUp({...signUp,lastName: e.target.value})}}
             type="text" className="outline-none h-8 rounded-md text-black mb-4 p-2 w-full"/>
             {errors.lastName && <span className="text-red-500 block mb-4">{errors.lastName}</span>}
     
-            <label htmlFor="role" className="block text-gray-700">Role</label>
+            <label htmlFor="role" className="block text-white">Role</label>
             <select id="role" value={signUp.role || ''} onChange={(e)=>{setSignUp({...signUp,role:e.target.value})}}
                 className="outline-none rounded-md text-black mb-4 p-2 w-full">
                 <option value="Student">
@@ -80,27 +82,27 @@ const Register  = () => {
             </select>
             {errors.role && <span className="text-red-500 block mb-4">{errors.role}</span>}
     
-            <label htmlFor="email" className="block text-gray-700">Email</label>
+            <label htmlFor="email" className="block text-white">Email</label>
             <input id="email" value={signUp.email || ''} onChange={(e) => {setSignUp({...signUp,email: e.target.value})}}
             type="text" className="outline-none h-8 rounded-md text-black mb-4 p-2 w-full"/>
             {errors.email && <span className="text-red-500 block mb-4">{errors.email}</span>}
     
-            <label htmlFor="password" className="block text-gray-700">Password</label>
+            <label htmlFor="password" className="block text-white">Password</label>
             <input id="password" type="password" value={signUp.password || ''} onChange={(e) => {setSignUp({...signUp,password: e.target.value})}} 
             className="outline-none h-8 rounded-md text-black mb-4 p-2 w-full"/>
             {errors.password && <span className="text-red-500 block mb-4">{errors.password}</span>}
     
-            <label htmlFor="password_confirmation" className="block text-gray-700">Confirm password</label>
+            <label htmlFor="password_confirmation" className="block text-white">Confirm password</label>
             <input id="password_confirmation" type="password" value={signUp.password_confirmation || ''} onChange={(e) => {setSignUp({...signUp,password_confirmation: e.target.value})}}
             className="outline-none h-8 rounded-md text-black mb-4 p-2 w-full"/>
             {errors.password_confirmation && <span className="text-red-500 block mb-4">{errors.password_confirmation}</span>}
             
             <div className="flex justify-center mt-4">
-            <button onClick={handleSignUp} className="bg-blue-500 text-white p-2 rounded-md">Sign Up</button>
+            <button onClick={handleSignUp} className="bg-[#581c87] hover:bg-[#1c092a] text-white p-2 rounded-md">Sign Up</button>
             </div>
-            <div className="text-center mt-4">
+            <div className="text-white text-center mt-4">
                     <p>Already have an account?</p>
-                    <button className="text-blue-500 underline hover:text-blue-700 focus:outline-none focus:text-blue-700" onClick={login}>
+                    <button className="text-[#581c87] underline hover:text-[#1c092a] focus:outline-none focus:text-blue-700" onClick={login}>
                         Login
                     </button>
             </div>
