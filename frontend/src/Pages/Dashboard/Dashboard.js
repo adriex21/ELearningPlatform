@@ -12,7 +12,7 @@ const Dashboard = (props) => {
     return( 
 
         <Main>
-            <div className="bg-gray-100 min-h-screen pt-[15px]">
+            <div className="min-h-screen pt-[15px]">
                 <div className="container mx-auto py-8 px-4">
                     <h1 className="text-4xl font-bold mb-6">Welcome to the Online Learning Platform</h1>
                     <p className="text-xl text-gray-700 mb-8">

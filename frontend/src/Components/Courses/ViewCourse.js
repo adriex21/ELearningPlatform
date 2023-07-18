@@ -58,18 +58,18 @@ const ViewCourse = () => {
         <Main>
             
             <div className="mt-10 ml-20 text-3xl font-semibold font-sans"> COURSE: ({course?.year}) {course?.name} </div>
-            <div className="border border-gray-300 rounded-md p-4 mb-4 mt-10 ml-20 mr-20">
+            <div className="border border-gray-300 rounded-md p-4 mb-4 mt-10 ml-20 mr-20 bg-white">
             {user.role === "Teacher" && (
                 <div className="flex flex-row gap-10">
-                <button className="bg-[#581c87] hover:bg-[#1c092a] text-white font-bold mb-10 py-2 px-4 rounded-md"
+                <button className="bg-[#581c87] hover:bg-[#1c092a] text-white font-bold mb-10 py-2 px-4 rounded-md shadow-md"
                     onClick={createModule}> Create module </button>
-                <button className="bg-[#581c87] hover:bg-[#1c092a] text-white font-bold mb-10 py-2 px-4 rounded-md"
+                <button className="bg-[#581c87] hover:bg-[#1c092a] text-white font-bold mb-10 py-2 px-4 rounded-md shadow-md"
                     onClick={createAssignment}> Create assignment </button>
                 </div>
                     
             )}
 
-            <div className="mb-4 bold text-2xl font-semibold p-4 border border-gray-300 "> Course content </div>
+            <div className="mb-4 bold text-2xl font-semibold p-4 border border-gray-300"> Course content </div>
                 
                 {course?.modules.map((module)=> (
                     <div className="border border-gray-300 p-4 mb-5">

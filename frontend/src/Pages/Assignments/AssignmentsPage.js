@@ -46,7 +46,7 @@ const AssignmentsPage = () => {
                 Assignments 
         </div>
 
-        <div className='relative flex flex-col gap-10 mb-5'>
+        <div className='relative flex flex-col gap-10 mb-5 bg-white'>
           {courses
             .sort((a, b) => (a.name < b.name ? 1 : -1))
             .map((course) => (

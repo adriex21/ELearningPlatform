@@ -53,7 +53,7 @@ const Assignments = ({ assignments }) => {
           {assignments.sort(((a,b)=> a.createdAt < b.createdAt ? 1 : -1)).map((assignment) => (
             
             <ul key={assignment._id}>
-              <div  className="relative border border-gray-300 rounded-md p-4 mb-4 bg-gray-50 ">
+              <div  className="relative border border-gray-300 rounded-md p-4 mb-4 bg-gray-50 shadow-md ">
                   <div className="flex flex-col gap-3">
                   <button onClick={()=>{openAssignment(assignment.type,assignment._id)}} className="font-semibold "> {assignment.title} </button>
                   {assignment.status === 'open' ? (
