@@ -29,7 +29,7 @@ const Dashboard = (props) => {
                                 src={studyImage}
                                 alt="Study"
                                 className="rounded-md shadow-md mx-auto"
-                                style={{ maxWidth: '600px' }}
+                                style={{ maxWidth: '550px' }}
                                 />
                             </div>
                         <div className="bg-white rounded shadow p-4">
@@ -42,7 +42,7 @@ const Dashboard = (props) => {
                             src={studyImage2}
                             alt="Interactive Learning"
                             className="rounded-md shadow-md mx-auto"
-                            style={{ maxWidth: '600px' }}
+                            style={{ maxWidth: '550px' }}
                             />
                         </div>
                     </div>

@@ -39,7 +39,7 @@ const Courses = (props) => {
                     <div className="flex flex-wrap gap-10">
                         {courses.sort(((a,b) => a.name < b.name ? 1 : -1)).map((courses)=> (
                             <ul key={courses._id}>
-                                <a href={`/viewCourse/${courses._id}`} className="relative border border-gray-300 rounded-md p-4 mb-4 bg-gray-100 flex flex-col">
+                                <a href={`/viewCourse/${courses._id}`} className="relative border border-gray-300 rounded-md p-4 mb-4 bg-gray-50 flex flex-col">
                                     <p> COURSE : ({courses.year}) {courses.name} </p>
                                     <p> Instructor : {courses.instructor.firstName} {courses.instructor.lastName} </p>
                                 </a>
