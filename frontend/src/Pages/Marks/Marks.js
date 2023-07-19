@@ -37,7 +37,7 @@ const Marks = () => {
                                                 <div className="">{testScore.test?.title}</div>
                                                 <div> Score obtained : {testScore.score} </div>
                                             </a>
-                                            ):(<div className="p-4 m-3"> No assignments taken yet!</div>)}    
+                                            ):(<div className="p-4 m-3"> No assignments yet!</div>)}    
                                         </ul>
                                         ))}
                                 </div>

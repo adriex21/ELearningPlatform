@@ -50,7 +50,7 @@ const Assignments = ({ assignments }) => {
       {assignments.length > 0 ? (
         <>
       
-          {assignments.sort(((a,b)=> a.createdAt < b.createdAt ? 1 : -1)).map((assignment) => (
+          {assignments.sort(((a,b)=> a.createdAt > b.createdAt ? 1 : -1)).map((assignment) => (
             
             <ul key={assignment._id}>
               <div  className="relative border border-gray-300 rounded-md p-4 mb-4 bg-gray-50 shadow-md ">

@@ -97,8 +97,8 @@ const EditAssignment = () => {
 
                         <div className="w-1/3"> 
                             <div className="flex justify-around"> 
-                                <button onClick={handleEdit} className="bg-blue-500 text-white p-2 rounded-md">Done</button>
-                                <button onClick={cancel} className="bg-blue-500 text-white p-2 rounded-md">Cancel</button>
+                                <button onClick={handleEdit} className="bg-[#581c87] hover:bg-[#1c092a]  text-white p-2 rounded-md">Done</button>
+                                <button onClick={cancel} className="bg-[#581c87] hover:bg-[#1c092a]  text-white p-2 rounded-md">Cancel</button>
                             </div>
                         </div>
                     

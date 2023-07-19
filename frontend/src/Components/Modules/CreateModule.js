@@ -66,7 +66,6 @@ const CreateModule = () => {
                 <label htmlFor="description" className="relative font-bold text-2xl pb-5"> Description </label>
                 <textarea id="description" value={create.description || ''} onChange={(e) => {setCreate({...create,description: e.target.value})}}
                 type="text" className="outline-none border border-gray-400 caret-black-400 rounded-md p-2 mb-4 text-black w-1/3" placeholder="i.e In this module we will learn about.."/>
-                {errors.description && <span className="text-red-500 block mb-4">{errors.description}</span>}
 
                 <label htmlFor="content" className="relative font-bold text-2xl pb-5"> Content </label>
                 <textarea id="content" value={create.content || ''} onChange={(e) => {setCreate({...create,content: e.target.value})}}
